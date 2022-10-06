@@ -1,12 +1,17 @@
 <?php
 
-function tabuada(float $numb): void
+
+function tabuada($numb): void
 {
-    for ($i = 1; $i <= 10; $i++) {
-        $resultado = $numb * $i;
-        echo " $numb X $i = $resultado <br>";
-    }
+	for ($i = 1; $i <= 10; $i++) {
+		$resultado = $numb * $i;
+        
+        echo "<tr><td> $numb X $i = $resultado</td></tr>";
+	}
 }
+
+$dados = filter_input_array(INPUT_POST);
+
 ?>
 <!doctype html>
 <html lang="en">
@@ -18,65 +23,91 @@ function tabuada(float $numb): void
     <title>Tabuada</title>
 </head>
 <body>
-    <h3>
-    <table align="left" border="1" cellpadding="12">
-        <tr><th>1</th>
-        <th>2</th>
-        <th>3</th>
-        <th>4</th>
-        <th>5</th>
-        </tr>
-        <tr>
-        <td><?= tabuada(1);     ?></td>
-        <td><?= tabuada(2);     ?></td>
-        <td><?= tabuada(3);     ?></td>
-        <td><?= tabuada(4);     ?></td>
-        <td><?= tabuada(5);     ?></td>
-        </tr>
-        <tr>
-            <th>6</th>
-            <th>7</th>
-            <th>8</th>
-            <th>9</th>
-            <th>10</th>
-        </tr>
-        <tr>
-        <td><?= tabuada(6); ?></td>
-        <td><?= tabuada(7); ?></td>
-        <td><?= tabuada(8); ?></td>
-        <td><?= tabuada(9); ?></td>
-        <td><?= tabuada(10); ?></td>
-        </tr>
-    </table>
-        <table align="left" border="1" cellpadding="12">
-        <tr><th>11</th>
-        <th>12</th>
-        <th>13</th>
-        <th>14</th>
-        <th>15</th>
-        </tr>
-        <tr>
-        <td><?= tabuada(11); "<br>"; ?></td>
-        <td><?= tabuada(12); "<br>"; ?></td>
-        <td><?= tabuada(13); "<br>"; ?></td>
-        <td><?= tabuada(14); "<br>"; ?></td>
-        <td><?= tabuada(15); "<br>"; ?></td>
-        </tr>
-        <tr>
-            <th>16</th>
-            <th>17</th>
-            <th>18</th>
-            <th>19</th>
-            <th>20</th>
-        </tr>
-        <tr>
-        <td><?= tabuada(16); ?></td>
-        <td><?= tabuada(17); ?></td>
-        <td><?= tabuada(18); ?></td>
-        <td><?= tabuada(19); ?></td>
-        <td><?= tabuada(20); ?></td>
-        </tr>
-    </table>
-    </h3>
+<style>
+    *{
+        padding: 0;
+        
+    }
+    #div1 {
+        display: flex;
+    }
+    table {
+        border: 1px solid #000;
+        flex-shrink:0;
+    }
+</style>
+
+<form method="post" style="text-align: center">
+	<?php
+	if (isset($_POST['numb'])) {
+		$numb = "";
+		$numb = $_POST['numb'];
+	}
+	?>
+    <h1>
+        <label for="numb">Tabuada: </label>
+        <input type="number" required name="numb" id="numb" value="<?php echo $numb ?>"
+               placeholder="Digite o número para saber a tabuada do msm.">
+        <button type="submit">play</button>
+    </h1>
+</form>
+<h1 style="text-align: center">Pesquisar entre as tabuadas
+<form style="text-align: center" action="" method="post">
+	<?php
+	if (isset($_POST['tb1']) && isset($_POST['tb2'])) {
+		$tb1 = "";
+		$tb1 = $_POST['tb1'];
+		$tb2 = "";
+		$tb2 = $_POST['tb2'];
+	}
+	?>
+    <label for="tb1">Primeira Tabuada</label>
+    <input id="tb1" type="number" value="<?php echo $tb1 ?>" name="tb1">
+    <label for="tb2">Última Tabuada</label>
+    <input type="number" id="tb2" value="<?php echo $tb2 ?>" name="tb2">
+
+    <input type="submit" value="pesquisar" name="pesquisarEntreTabuada">
+</form>
+</h1>
+<?php
+if (isset($dados['pesquisarEntreTabuada'])) {
+	$tb1 = $_POST['tb1'];
+	$tb2 = $_POST['tb2'];
+}
+
+
+?>
+
+<h5 style="text-align: center">
+    <a href="tabuada.php">
+        <button type="button">reset</button>
+    </a>
+</h5>
+<h1>
+    <div id='div1'>
+		<?php if (!empty($_POST['numb'])){
+		$numb = $_POST['numb']; ?>
+            <?php echo "<table id='table1' align='center' border='1' cellpadding='12'>"; ?>
+        
+            <th>
+				<?php echo $_POST['numb']; ?>
+            </th>
+        
+            <?php tabuada($numb); ?>
+            
+	<?php } ?>
+    </div>
+</h1>
+<h1>
+<div id='div1'>
+		<?php if (!empty($dados['pesquisarEntreTabuada']))
+            for ($tb1 = 1; $tb1 <= $tb2; $tb1++) {
+            echo "<table id='table1' border='1' align='center'> <thead><tr><th> $tb1</th></tr></thead>";
+            
+tabuada($tb1, $tb1);
+echo "</table>";
+} ?>
+</div>
+</h1>
 </body>
 </html>

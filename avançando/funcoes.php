@@ -43,4 +43,3 @@ function adiciona2($x): void
 	echo $x;
 }
 
-adiciona2(435);
