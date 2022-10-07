@@ -25,10 +25,10 @@ function ordenaNotas(array $nota1, $nota2): int
 //	if ($nota2['nota'] > $nota1['nota']) {
 //		return 1;
 //	}
-//
-//	return 0;
+//  if ($nota2['nota'] === $nota1['nota'])
+//	    return 0;
 }
 
 echo "ordenadas";
-usort($notas, 'ordenaNotas');
+usort($notas, 'ordenaNotas'); //usort() função que recebe dois parámentros o array e a função que ordena esse array e deve ser passada o nome da mesma dentro de aspas.
 var_dump($notas);
