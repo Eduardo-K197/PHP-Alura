@@ -5,8 +5,8 @@ function tabuada($numb): void
 {
 	for ($i = 1; $i <= 10; $i++) {
 		$resultado = $numb * $i;
-        
-        echo "<tr><td> $numb X $i = $resultado</td></tr>";
+		
+		echo "<tr><td> $numb X $i = $resultado</td></tr>";
 	}
 }
 
@@ -24,16 +24,18 @@ $dados = filter_input_array(INPUT_POST);
 </head>
 <body>
 <style>
-    *{
+    * {
         padding: 0;
-        
+
     }
+
     #div1 {
         display: flex;
     }
+
     table {
         border: 1px solid #000;
-        flex-shrink:0;
+        flex-shrink: 0;
     }
 </style>
 
@@ -52,22 +54,22 @@ $dados = filter_input_array(INPUT_POST);
     </h1>
 </form>
 <h1 style="text-align: center">Pesquisar entre as tabuadas
-<form style="text-align: center" action="" method="post">
-	<?php
-	if (isset($_POST['tb1']) && isset($_POST['tb2'])) {
-		$tb1 = "";
-		$tb1 = $_POST['tb1'];
-		$tb2 = "";
-		$tb2 = $_POST['tb2'];
-	}
-	?>
-    <label for="tb1">Primeira Tabuada</label>
-    <input id="tb1" type="number" value="<?php echo $tb1 ?>" name="tb1">
-    <label for="tb2">Última Tabuada</label>
-    <input type="number" id="tb2" value="<?php echo $tb2 ?>" name="tb2">
+    <form style="text-align: center" action="" method="post">
+		<?php
+		if (isset($_POST['tb1']) && isset($_POST['tb2'])) {
+			$tb1 = "";
+			$tb1 = $_POST['tb1'];
+			$tb2 = "";
+			$tb2 = $_POST['tb2'];
+		}
+		?>
+        <label for="tb1">Primeira Tabuada</label>
+        <input id="tb1" type="number" value="<?php echo $tb1 ?>" name="tb1">
+        <label for="tb2">Última Tabuada</label>
+        <input type="number" id="tb2" value="<?php echo $tb2 ?>" name="tb2">
 
-    <input type="submit" value="pesquisar" name="pesquisarEntreTabuada">
-</form>
+        <input type="submit" value="pesquisar" name="pesquisarEntreTabuada">
+    </form>
 </h1>
 <?php
 if (isset($dados['pesquisarEntreTabuada'])) {
@@ -85,29 +87,28 @@ if (isset($dados['pesquisarEntreTabuada'])) {
 </h5>
 <h1>
     <div id='div1'>
-		<?php if (!empty($_POST['numb'])){
-		$numb = $_POST['numb']; ?>
-            <?php echo "<table id='table1' align='center' border='1' cellpadding='12'>"; ?>
-        
+		<?php if (!empty($_POST['numb'])) {
+			$numb = $_POST['numb']; ?>
+			<?php echo "<table id='table1' align='center' border='1' cellpadding='12'>"; ?>
+
             <th>
 				<?php echo $_POST['numb']; ?>
             </th>
-        
-            <?php tabuada($numb); ?>
-            
-	<?php } ?>
+			
+			<?php tabuada($numb); ?>
+		
+		<?php } ?>
     </div>
 </h1>
 <h1>
-<div id='div1'>
+    <div id='div1'>
 		<?php if (!empty($dados['pesquisarEntreTabuada']))
-            for ($tb1 = 1; $tb1 <= $tb2; $tb1++) {
-            echo "<table id='table1' border='1' align='center'> <thead><tr><th> $tb1</th></tr></thead>";
-            
-tabuada($tb1, $tb1);
-echo "</table>";
-} ?>
-</div>
+			for ($tb1 = 1; $tb1 <= $tb2; $tb1++) {
+				echo "<table id='table1' border='1' align='center'> <thead><tr><th> $tb1</th></tr></thead>";
+				tabuada($tb1, $tb1);
+				echo "</table>";
+			} ?>
+    </div>
 </h1>
 </body>
 </html>

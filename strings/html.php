@@ -1,0 +1,33 @@
+<?php
+$name = filter_input(INPUT_POST, 'input');
+if (isset($name)) {
+	$name = htmlentities($name);
+}
+?>
+
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport"
+	      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Document</title>
+</head>
+<body>
+<form action="" method="post">
+<label>Nome:
+	<input type="text" name="input">  <!-- addslashes Retorna uma string com barras adicionadas antes de caracteres que precisam ser escapa -->
+</label>
+    <button type="submit">enviar</button>
+</form>
+<br><br>
+<div>
+    <ul>
+        <li>
+	        <?= $name; ?>
+        </li>
+    </ul>
+</div>
+</body>
+</html>
