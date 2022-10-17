@@ -1,9 +1,14 @@
 <?php
 
-class Conta
+namespace Alura\Banco\Modelo\Conta;
+
+use Alura\Banco\Modelo\AcessoPropiedades;
+
+abstract class Conta
 {
+	use AcessoPropiedades;
 	public Titular $titular; // readonly permite que o objeto seja publico mas só pode ser definido atributos uma unica vez.
-	private float $saldo;
+	protected float $saldo;
 	private static int $numeroDeContas = 0;
 	
 	public function __construct(Titular $titular)
@@ -20,11 +25,14 @@ class Conta
 	
 	public function sacar(float $valorASacar): void
 	{
-		if ($valorASacar > $this->saldo) {
+		
+		$tarifaSaque = $valorASacar * $this->percentualTarifa();
+		$valorSaque = $valorASacar + $tarifaSaque;
+		if ($valorSaque > $this->saldo) {
 			echo "Você não tem saldo suficiente!";
 			return;
 		}
-		$this->saldo -= $valorASacar;
+		$this->saldo -= $valorSaque;
 	}
 	
 	public function depositar(float $valorADepositar): void
@@ -34,16 +42,6 @@ class Conta
 			return;
 		}
 		$this->saldo += $valorADepositar;
-	}
-	
-	public function transferir(float $valorATransferir, conta $contaDestino): void
-	{
-		if ($valorATransferir > $this->saldo) {
-			echo "Saldo insuficiente!";
-			return;
-		}
-		$this->sacar($valorATransferir);
-		$contaDestino->depositar($valorATransferir);
 	}
 	
 	public function recuperaSaldo(): string
@@ -66,6 +64,6 @@ class Conta
 		return $this->titular->recuperaNome();
 	}
 	
+	abstract protected function percentualTarifa(): float;
+	
 }
-
-//$criarConta =  new Conta();

@@ -1,6 +1,14 @@
 <?php
 
-class Titular extends Pessoa
+namespace Alura\Banco\Modelo\Conta;
+
+
+use Alura\Banco\Modelo\Autenticavel;
+use Alura\Banco\Modelo\Pessoa\Endereco;
+use Alura\Banco\Modelo\Pessoa\Cpf;
+use Alura\Banco\Modelo\Pessoa\Pessoa;
+
+class Titular extends Pessoa implements Autenticavel
 {
 	private Endereco $endereco;
 	
@@ -21,13 +29,18 @@ class Titular extends Pessoa
 		
 		if ($dado == 'estado') {
 			return $estado;
-		} elseif ($dado == 'cidade') {
+		} if ($dado == 'cidade') {
 			return $cidade;
-		} elseif ($dado == 'bairro') {
+		} if ($dado == 'bairro') {
 			return $bairro;
-		} elseif ($dado == 'rua') {
+		} if ($dado == 'rua') {
 			return $rua;
 		}
 		return $numero;
+	}
+	
+	public function podeAutentica(string $senha): bool
+	{
+		return $senha === "abc";
 	}
 }

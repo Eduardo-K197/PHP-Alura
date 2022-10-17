@@ -1,8 +1,13 @@
 <?php
 
-class Cpf
+namespace Alura\Banco\Modelo\Pessoa;
+
+use Alura\Banco\Modelo\AcessoPropiedades;
+
+final class Cpf
 {
-	private string $numero;
+	use AcessoPropiedades;
+	protected string $numero;
 	
 	public function __construct(string $numero)
 	{

@@ -1,7 +1,24 @@
 <?php
 
-class Endereco
+namespace Alura\Banco\Modelo\Pessoa;
+
+use Alura\Banco\Modelo\AcessoPropiedades;
+
+/**
+ * Class Endereco
+ * @package Alura\Banco\Modelo
+ * @property-read string $estado
+ * @property-read string $cidade
+ * @property-read string $bairro
+ * @property-read string $rua
+ * @property-read string $numero
+ * @property $nome
+ * @property $cargo
+ */
+
+final class Endereco
 {
+	use AcessoPropiedades;
 	private string $estado;
 	private string $cidade;
 	private string $bairro;
@@ -42,4 +59,19 @@ class Endereco
 		return $this->numero;
 	}
 	
+	public function __toString(): string
+	{
+		return "$this->cidade, $this->bairro, $this->rua, $this->numero";
+	}
+//	public function alteraCidade($novaCidade): void
+//	{
+//		$this->cidade = $novaCidade;
+//	}
+//
+//	public function __set($nomeAtributo, $value): void
+//	{
+//		$metodo = 'altera' . ucfirst($nomeAtributo);
+//		$this->$metodo($value);
+//
+//	}
 }
