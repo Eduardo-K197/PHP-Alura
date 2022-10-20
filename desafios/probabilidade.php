@@ -108,7 +108,7 @@ if (isset($_POST['calcula'])) {
 	}
 }
 ?>
-<p><?php if ($_POST['pb'] != "pbm" && isset($_POST['na']) && $_POST['na'] != "") echo number_format(num: $dados, decimals: 2, decimal_separator: ',', thousands_separator: '.') ?></p>
+<p><?php if (isset($_POST['pb']) && $_POST['pb'] != "pbm" && $_POST['na'] != "") echo number_format(num: $dados, decimals: 2, decimal_separator: ',', thousands_separator: '.') ?></p>
 <p><?php if (isset($_POST['na2']) && $_POST['na2'] != "" && $_POST['pb'] == "pbm") echo number_format(num: $dados, decimals: 2, decimal_separator: ',', thousands_separator: '.') ?></p>
 </body>
 </html>

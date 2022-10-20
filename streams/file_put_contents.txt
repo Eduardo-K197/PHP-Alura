@@ -1,0 +1,32 @@
+Os dados para escrever. Pode ser uma string, uma matriz ou um recurso de fluxo.
+
+Se os dados forem um recurso de fluxo, o buffer restante desse fluxo será copiado para o arquivo especificado. Isso é semelhante ao uso de stream_copy_to_stream.
+
+Você também pode especificar o parâmetro de dados como uma matriz de dimensão única. Isso é equivalente a file_put_contents($filename, implode('', $array)).
+
+int
+
+$flags
+
+[opcional]
+
+O valor dos sinalizadores pode ser qualquer combinação dos seguintes sinalizadores (com algumas restrições), unidos ao operador binário OR (|).
+
+
+Sinalizadores disponíveis
+
+Bandeira
+
+Descrição
+
+FILE_USE_INCLUDE_PATH
+
+Procure por nome de arquivo no diretório de inclusão. Consulte include_path para obter mais informações.
+
+FILE_APPEND
+
+Se o arquivo filename já existir, anexe os dados ao arquivo em vez de sobrescrevê-lo. Mutuamente exclusivo com LOCK_EX, pois os anexos são atômicos e, portanto, não há motivo para travar.
+
+LOCK_EX
+
+Adquira um bloqueio exclusivo no arquivo enquanto prossegue para a escrita. Mutuamente exclusivo com FILE_APPEND
