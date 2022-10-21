@@ -5,11 +5,6 @@ function pb1($n, $na): float
 	return $na / $n;
 }
 
-function pb2($n, $na, $na2): float
-{
-	return (($na + $na2) - $na) / $n;
-}
-
 if (isset($_POST['calcula'])) {
 	if ($_POST['pb'] == 1) {
 		$na = filter_input(INPUT_POST, 'na');
@@ -17,19 +12,26 @@ if (isset($_POST['calcula'])) {
 		$erro = array();
 		if (empty($n))
 			$erro[] = "Preencha o Número de eventos ocorridos!";
-        elseif (empty($na))
+		if (empty($na))
 			$erro[] = "Preencha o Número de resultados possíveis!";
 		else
 			$dados = pb1($n, $na);
 	}
 	if (isset($_POST['pb']) && $_POST['pb'] == "pbm") {
-		$na = filter_input(INPUT_POST, 'na');
-		$na2 = filter_input(INPUT_POST, 'na2');
-		$n = filter_input(INPUT_POST, 'n');
+		$na =  filter_input(INPUT_POST, 'na');   //Número de resultados possíveis
+        $na2 = explode(',', filter_input(INPUT_POST, 'na2')); //Segundo Número de eventos ocorridos
+        $n = explode(',', filter_input(INPUT_POST, 'n'));      //Número de eventos ocorridos
+//		$result = array_intersect($dado['na'], $dado['na2']);
+//        print_r($result);
+		if (empty($n))
+			$erro[] = "Preencha o Número de eventos ocorridos!";
+		if (empty($na))
+			$erro[] = "Preencha o Número de resultados possíveis!";
 		if (empty($na2))
-			$erro[] = "Preencha o Segundo Número de eventos ocorridos";
-		else
-			$dados = pb2($n, $na, $na2);
+			$erro[] = "Preencha o Segundo Número de eventos ocorridos!";
+		else {
+			$dados = (($na + $na2) - $na2) - $intercessao;
+		}
 	}
 	
 }
@@ -109,6 +111,6 @@ if (isset($_POST['calcula'])) {
 }
 ?>
 <p><?php if (isset($_POST['pb']) && $_POST['pb'] != "pbm" && $_POST['na'] != "") echo number_format(num: $dados, decimals: 2, decimal_separator: ',', thousands_separator: '.') ?></p>
-<p><?php if (isset($_POST['na2']) && $_POST['na2'] != "" && $_POST['pb'] == "pbm") echo number_format(num: $dados, decimals: 2, decimal_separator: ',', thousands_separator: '.') ?></p>
+<p><?php if (isset($_POST['na2']) && $_POST['na2'] != "" && $_POST['pb'] == "pbm") echo $dados ?></p>
 </body>
 </html>
