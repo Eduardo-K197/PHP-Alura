@@ -8,7 +8,7 @@ use Alura\Banco\Modelo\Autenticavel;
 /**
  * @property $cargo
  * @property $nome
- * @property $cpf
+ * @property $email
  * @property $salario
  */
 

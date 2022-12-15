@@ -91,7 +91,7 @@ if (isset($_POST['calcula'])) {
 
         select.addEventListener('change', function () {
             if (select.value === "pbm")
-                document.getElementById('ne').innerHTML = "<label>Segundo Número de eventos ocorridos: <input type='text' name='na2' value=''> </label>"
+                document.getElementById('ne').innerHTML = "<label>Segundo Número de eventos ocorridos: <input type='text' name='na2' value=""> </label>"
             else
                 document.getElementById('ne').innerHTML = "";
         })

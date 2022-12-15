@@ -2,9 +2,9 @@
 
 namespace Alura\Banco\Modelo\Funcionario;
 
-use Alura\Banco\Modelo\{AcessoPropiedades, Pessoa\Cpf, Pessoa\Pessoa};
+use Alura\Banco\Modelo\{AcessoPropiedades, Pessoa\Cpf, Pessoa\Usuario};
 
-abstract class Funcionario extends Pessoa
+abstract class Funcionario extends Usuario
 {
 	private string $salario;
 	

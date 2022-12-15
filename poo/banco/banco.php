@@ -122,7 +122,7 @@ $controlador->adicionaBonificacaoDe($editor);
     </thead>
     <tbody>
     <tr>
-        <td><?= $desenvolvedor->cpf ?></td>
+        <td><?= $desenvolvedor->email ?></td>
         <td><?= $desenvolvedor->nome ?></td>
         <td><?= $desenvolvedor->cargo ?></td>
         <td><?= 'R$ ' .$desenvolvedor->salario ?></td>
@@ -130,7 +130,7 @@ $controlador->adicionaBonificacaoDe($editor);
     </tr>
     
     <tr>
-        <td><?= $diretor->cpf ?></td>
+        <td><?= $diretor->email ?></td>
         <td><?= $diretor->nome ?></td>
         <td><?= $diretor->cargo ?></td>
         <td><?= 'R$ ' .$diretor->salario ?></td>
@@ -138,7 +138,7 @@ $controlador->adicionaBonificacaoDe($editor);
     </tr>
     
     <tr>
-        <td><?= $gerente->cpf ?></td>
+        <td><?= $gerente->email ?></td>
         <td><?= $gerente->nome ?></td>
         <td><?= $gerente->cargo ?></td>
         <td><?= 'R$ ' .$gerente->salario ?></td>
@@ -146,7 +146,7 @@ $controlador->adicionaBonificacaoDe($editor);
     </tr>
     
     <tr>
-        <td><?= $editor->cpf ?></td>
+        <td><?= $editor->email ?></td>
         <td><?= $editor->nome ?></td>
         <td><?= $editor->cargo ?></td>
         <td><?= 'R$ ' .$editor->salario ?></td>

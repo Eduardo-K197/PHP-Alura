@@ -9,7 +9,7 @@ use Alura\Banco\Modelo\Autenticavel;
  * @property $cargo
  * @property $nome
  * @property $salario
- * @property $cpf
+ * @property $email
  * @property $bonificaco
  */
 class Desenvolvedor extends Funcionario implements Autenticavel

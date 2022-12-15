@@ -6,9 +6,9 @@ namespace Alura\Banco\Modelo\Conta;
 use Alura\Banco\Modelo\Autenticavel;
 use Alura\Banco\Modelo\Pessoa\Endereco;
 use Alura\Banco\Modelo\Pessoa\Cpf;
-use Alura\Banco\Modelo\Pessoa\Pessoa;
+use Alura\Banco\Modelo\Pessoa\Usuario;
 
-class Titular extends Pessoa implements Autenticavel
+class Titular extends Usuario implements Autenticavel
 {
 	private Endereco $endereco;
 	
